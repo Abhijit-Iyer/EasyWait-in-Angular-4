@@ -21,7 +21,7 @@ export class QueueStatusComponent implements OnInit {
 	private url = myGlobals.url + 'api/queue/';
 
   private load_component = false;
-  accepting_appointments = 0;
+  accepting_appointments = false;
 	queue_id: String;
   logged_in: boolean;
   queue_name: string;
@@ -38,8 +38,17 @@ export class QueueStatusComponent implements OnInit {
 
   	onClick() {
 
+      this.load_component = false; 
+
   		this.handleEvent();
  	}
+
+   onKeyUp() {
+
+      this.load_component = false; 
+
+      this.handleEvent();
+   }
 
   	handleEvent() {
 
@@ -70,7 +79,8 @@ export class QueueStatusComponent implements OnInit {
 
     this.queue_id = res['id'];
 		this.queue_position = res['position'];
-    this.accepting_appointments = res['accepting_appointments'];
+    if(res['accepting_appointments'] == 1)
+      this.accepting_appointments = true;
     this.queue_name = res['name'];
 
        this.load_component = true;

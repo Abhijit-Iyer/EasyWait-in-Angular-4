@@ -174,7 +174,7 @@ import * as myGlobals from '../globals';
             this.appointments_flag = 0;
           }
 
-          this.load_component = true;
+          //this.load_component = true;
           console.log(response);
           
           this.appointments = response['appointments'];
