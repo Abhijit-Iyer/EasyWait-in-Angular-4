@@ -25,14 +25,14 @@
 
                             <div class="input-field col s12 hoverable">
                                 <i class="material-icons prefix">add_circle</i>
-                                <input class="form-control" [(ngModel)]="queue_name" placeholder="Queue Name" (keyup.enter)="onKeyUp()">
+                                <input class="form-control" [(ngModel)]="queue_name" placeholder="Queue Name" (keyup.enter)="addQueue()">
                             </div>
 
                             <br><br><br>
                         </div>
 
                         <div class="card-panel right-align">
-                            <button type="button" class="btn btn-success hoverable" (click)="onClick()">Add</button><br>
+                            <button type="button" class="btn btn-success hoverable" (click)="addQueue()">Add</button><br>
 
                             <br><br>
 
@@ -40,29 +40,39 @@
                                 <span class="card-title">Queue Inventory</span>
 
                                 <div class="row list">
+                                    <div class="col s1 left-align">ID</div>
                                     <div class="col s6 left-align">Name</div>
-                                    <div class="col s3 left-align">ID</div>
+                                    <div class="col s2 left-align">Position</div>
                                     <div class="col s3 left-align">Options</div>
+                                    <!-- <div class="col s3 left-align">Appointments</div> -->
                                 </div>
 
-                                <a id="q_list" href="#" class="list-group-item list-group-item-action list-group-item-success" *ngFor='let queuedetail of queuelist'>
+                                <a id="q_list" class="list-group-item list-group-item-action list-group-item-success" *ngFor='let queuedetail of queuelist'>
                                     <div class="row hoverable list stripped left-align">
-                                        <div class="col s6">
-                                            <div class="chip hoverable">
-                                                <img src="../../assets/yuna.jpg" alt="Contact Person"> {{queuedetail.name}}
-                                            </div>
-                                        </div>
-
-                                        <div class="col s3">
-                                            <div class="chip hoverable">
+                                        <div class="col s1">
+                                            <div class="chip white teal-text hoverable">
                                                 {{queuedetail.id}}
                                             </div>
                                         </div>
 
-                                        <div class="col s3">
-                                            <a class="btn-floating waves-effect waves-light grey darken-2 hoverable"><i class="material-icons">arrow_forward</i></a>
-                                            <a class="btn-floating waves-effect waves-light grey darken-2 hoverable"><i class="material-icons">settings</i></a>
-                                            <a class="btn-floating btn-small waves-effect waves-light red hoverable"><i class="material-icons">delete_forever</i></a>
+                                        <div class="col s6">
+                                            <div class="chip hoverable">
+                                                <img src="../../assets/profile.png" alt="Contact Person"> {{queuedetail.name}}
+                                            </div>
+                                        </div>
+
+                                        <div class="col s2">
+                                            <div id="pos{{queuedetail.id}}" class="chip hoverable amber">
+                                                {{queuedetail.current_position}}
+                                            </div>
+                                        </div>
+
+                                       <div class="col s3">
+                                            <a (click)="moveNext(queuedetail.id)" class="btn-floating waves-effect waves-light grey darken-2 hoverable"><i class="material-icons">arrow_forward</i></a>
+                                            
+                                            <a (click)="reset(queuedetail.id)" class="btn-floating btn-small waves-effect waves-light grey darken-2 hoverable"><i class="material-icons">refresh</i></a>
+
+                                            <a class="btn-floating waves-effect waves-light red hoverable"><i class="material-icons">settings</i></a>
                                         </div>
                                     </div>
                                 </a>

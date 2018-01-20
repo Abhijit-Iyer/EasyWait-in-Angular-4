@@ -14,11 +14,12 @@ import * as myGlobals from '../globals';
 
 export class CreateQueueComponent implements OnInit {
 
-	private url = 'http://ewapi.krishna-seva.net/api/queue';
+	private url = myGlobals.url + 'api/queue';
   
   queue_name: string;
   queue_id: string;
   queuelist: string;
+  isDisabled: boolean;
 
   constructor(private http : HttpClient, private cookieService : CookieService) { }
 
@@ -68,15 +69,7 @@ export class CreateQueueComponent implements OnInit {
 
 }
 
-  	onKeyUp() {
-  		this.getJSON();
-  	}
-
-  	onClick() {
-  		this.getJSON();
-  	}
-
-  	getJSON() {
+  	addQueue() {
 
         let post = {name: this.queue_name};
 
@@ -118,10 +111,54 @@ export class CreateQueueComponent implements OnInit {
       });
   	}
 
-    displayName() {
+    moveNext(id: string) {
 
-      // var label = document.getElementById('queue_id&name');
+      let post = {action: 'movenext'};
 
-      // label.innerHTML = 'Queue ID: ' + this.queue_id + '.' + ' Queue Name: ' + this.queue_name;
+      this.http.post(this.url + "/" + id, post, {
+
+          headers: new HttpHeaders()
+          .set('Authorization', 'Bearer ' + this.cookieService.get('sign_up_token'))
+
+        })
+      .subscribe((response: Response) => {
+
+          document.getElementById( "pos" + id ).innerHTML=response[ 'position' ];
+
+      }, (error: Response) => {
+
+        if(error.status == 401)
+          alert('Please Log-In to continue');
+        else
+          alert('An unexpected error occured.');
+
+      });
+
     }
+
+    reset(id: string) {
+
+      let post = {action: 'reset'};
+
+      this.http.post(this.url + "/" + id, post, {
+
+          headers: new HttpHeaders()
+          .set('Authorization', 'Bearer ' + this.cookieService.get('sign_up_token'))
+
+        })
+      .subscribe((response: Response) => {
+
+          document.getElementById( "pos" + id ).innerHTML=response[ 'position' ];
+
+      }, (error: Response) => {
+
+        if(error.status == 401)
+          alert('Please Log-In to continue');
+        else
+          alert('An unexpected error occured.');
+
+      });
+
+    }
+
 }

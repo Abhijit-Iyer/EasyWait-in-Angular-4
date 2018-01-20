@@ -8,27 +8,27 @@
             <span class="card-title">Queue Details</span>
 
             <div class="row list">
-                <div class="col s6 left-align">Name</div>
                 <div class="col s3 left-align">ID</div>
+                <div class="col s6 left-align">Name</div>
                 <div class="col s3 left-align">Position</div>
             </div>
 
             <div class="row hoverable list stripped left-align">
-                <div class="col s6">
-                    <div class="chip hoverable">
-                         <img src="../../assets/details.png" alt="Contact Person"> {{this.queue_name}} 
-
-                    </div>
-                </div>
 
                 <div class="col s3">
-                    <div class="chip hoverable">
+                    <div class="chip hoverable white teal-text">
                         {{this.queue_id}}
                     </div>
                 </div>
 
+                <div class="col s6">
+                    <div class="chip hoverable">
+                         <img src="../../assets/profile.png" alt="Contact Person"> {{this.queue_name}}
+                    </div>
+                </div>
+
                 <div class="col s3">
-                    <div class="chip red white-text hoverable">
+                    <div class="chip amber black-text hoverable">
                         {{this.queue_position}}
                     </div>
                 </div>

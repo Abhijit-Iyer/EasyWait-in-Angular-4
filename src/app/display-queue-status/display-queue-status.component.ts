@@ -7,12 +7,15 @@ import { QueueStatusComponent } from '../queue-status/queue-status.component';
 import * as myGlobals from '../globals';
 
 @Component({
-   selector: 'app-display-queue-status',
-   templateUrl: './display-queue-status.component.html',
-   styleUrls: ['./display-queue-status.component.css']
- })
+
+  selector: 'app-display-queue-status',
+  templateUrl: './display-queue-status.component.html',
+  styleUrls: ['./display-queue-status.component.css']
+})
+
 
  export class DisplayQueueStatusComponent implements OnInit {
+
 
      @Input() queue_position: string;
      @Input() queue_id: string;
@@ -20,14 +23,15 @@ import * as myGlobals from '../globals';
      @Input() accepting_appointments: boolean;
      @Input() private load_component = false;
 
-   reference_name: string;
-   private url = myGlobals.url + 'api/queue/';
-   status: string;
+  reference_name: string;
+  private url = myGlobals.url + 'api/queue/';
+  status: string;
+
    logged_in: boolean;
    appointments: any;
    position: string;
    appointments_flag = 0;
-   
+
    constructor(private http : HttpClient, private cookieService : CookieService) {
 
     }
@@ -158,7 +162,7 @@ import * as myGlobals from '../globals';
     }
 
 
-     getAppointments() {
+    getAppointments() {
 
     this.http.get(this.url + this.queue_id + '/appointment', {
 
@@ -210,3 +214,4 @@ import * as myGlobals from '../globals';
     }
 
  } 
+

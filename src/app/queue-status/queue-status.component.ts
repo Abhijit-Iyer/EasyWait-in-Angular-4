@@ -43,12 +43,14 @@ export class QueueStatusComponent implements OnInit {
   		this.handleEvent();
  	}
 
-   onKeyUp() {
+    onKeyUp() {
 
-      this.load_component = false; 
+      this.load_component = false;
 
       this.handleEvent();
-   }
+
+    }
+
 
   	handleEvent() {
 
@@ -79,8 +81,12 @@ export class QueueStatusComponent implements OnInit {
 
     this.queue_id = res['id'];
 		this.queue_position = res['position'];
-    if(res['accepting_appointments'] == 1)
+
+
+    if ( res['accepting_appointments'] == 1 )
+
       this.accepting_appointments = true;
+
     this.queue_name = res['name'];
 
        this.load_component = true;

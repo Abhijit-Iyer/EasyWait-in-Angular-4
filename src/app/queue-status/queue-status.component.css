@@ -1,3 +1,48 @@
+
+/* .form-control{ */
+/*  */
+/*     text-align: center; */
+/*    [> width: 300px;<] */
+/*    padding: 15px 30px; */
+/*     font-size: 14px; */
+/* } */
+/*  */
+/* .form-inline { */
+/*     margin-top: 25px; */
+/* } */
+/*  */
+/* h3 { */
+/*     display: inline; */
+/* } */
+/*  */
+/* button { */
+/*     border: none; */
+/*     padding: 15px 22px; */
+/*     font-size: 14px; */
+/* } */
+/*  */
+/* label { */
+/*         text-align: center; */
+/* } */
+/*  */
+/* #queue_status { */
+/*  */
+/*     margin-top: 160px; */
+/*     margin-bottom: 80px; */
+/* } */
+/*  */
+/* /*input[type=text] { */
+/*     width: 50px; */
+/*     -webkit-transition: width 0.4s ease-in-out; */
+/*     transition: width 0.4s ease-in-out; */
+/*     text-align: center; */
+/* } */
+/*  */
+/*  */
+/* input[type=text]:focus { */
+/*     width: 20%; */
+/* }*/
+
 .form-control{
 
     text-align: center;
@@ -41,3 +86,4 @@ label {
 input[type=text]:focus {
     width: 20%;
 }*/
+
